@@ -7,7 +7,7 @@ function Navigation() {
         <nav className={style.navigation}>
             <ul className={style.navList}>
                 <li>
-                    <NavLink activeClassName={style.active} to="/">
+                    <NavLink activeClassName={style.active} exact to="/">
                         <p><i className="fas fa-home"></i></p>
                         <p>Home</p>
                     </NavLink>
@@ -45,12 +45,6 @@ function Navigation() {
                     <NavLink activeClassName={style.active} to='/yet-another'>
                         <p>Yet</p>
                         <p>Another</p>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink activeClassName={style.active} to='/last-feature'>
-                        <p>Last</p>
-                        <p>feature</p>
                     </NavLink>
                 </li>
             </ul>
