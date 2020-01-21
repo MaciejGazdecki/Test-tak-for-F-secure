@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import style from './home.module.scss';
 import SeccondTab from "./2ndTab/seccondTab";
+import Summary from "./Summary/summary";
 
 function Home() {
     const [activeComponent, setActive] = useState(true);
     return (
         <section className={style.homeSection}>
-            <div className={style.infoBar}>
+            <section className={style.infoBar}>
                 <div className={style.header}>
                     <div className={style.panel}>
                         <h2>Header</h2>
@@ -26,7 +27,8 @@ function Home() {
                     </div>
                 </div>
                 <i className="far fa-question-circle"></i>
-            </div>
+            </section>
+            {activeComponent ? <Summary/> : <SeccondTab/>}
         </section>
     )
 }
