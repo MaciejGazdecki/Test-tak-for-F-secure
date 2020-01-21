@@ -1,15 +1,21 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import style from './header.module.scss';
+import {OptionContext} from "../App/optionContext";
+import {SetOptionContext} from "../App/setOptionContext";
 
 function Header() {
+    const option = useContext(OptionContext);
+    const setOption = useContext(SetOptionContext);
+
     return (
         <header className={style.header}>
-            <select name="company" className={style.select}>
-                <option value="">Select Company</option>
-                <option value="Company 1">Company 1</option>
-                <option value="Company 2">Company 2</option>
-                <option value="Company 3">Company 3</option>
-                <option value="Company 4">Company 4</option>
+            <select name="company" className={style.select}
+                    onChange={(event)=> setOption(event.target.value)} value={option}
+            >
+                <option value="">All Companies</option>
+                <option value="F-Secure">F-Secure</option>
+                <option value="Google">Google</option>
+                <option value="Microsoft">Microsoft</option>
             </select>
             <div className={style.icons}>
                 <i className="far fa-bell"></i>

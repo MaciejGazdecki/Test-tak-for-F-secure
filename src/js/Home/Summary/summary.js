@@ -1,8 +1,11 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import style from './summary.module.scss';
 import {data} from "../Data/data";
+import {OptionContext} from "../../App/optionContext";
 
 function Summary() {
+    const option = useContext(OptionContext);
+
     return (
         <section className={style.summarySection}>
             <div className={style.background}>
@@ -29,10 +32,12 @@ function Summary() {
                         <div className={style.empty}></div>
                     </div>
                     <ul>
-                        {data.map((el,ix) =>
+                        {data.filter(el => el.company === option || !option).map((el,ix) =>
                             <li key={ix} className={style.record}>
                                 <p className={style.company}>{el.company}</p>
-                                <p className={`${style.type} ${style.server}`}><i className="fas fa-server"></i>{el.type}</p>
+                                <p className={`${style.type} ${style.server}`}>
+                                    <i className="fas fa-server"></i>{el.type}
+                                </p>
                                 <p className={style.partner}>{el.partner}</p>
                                 <p className={style.tags}>{el.tags}</p>
                                 <p className={style.findings}>
